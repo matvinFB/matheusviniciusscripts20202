@@ -1,4 +1,5 @@
 #!/bin/bash
+# Correção: 1,0
 
 [ -f $1 ] && echo "É um arquivo." 
 [ -d $1 ] && echo "É um diretório."
