@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# Correção: 1,0
 
 #Professor, possivelmente espera que eu use 3 IF para verificar a existencia das pastas. Entretanto decide escrever assim pois é mais simples e faz uso dos recursos já implementados na linguagem.
 for i in $(ls $1)
