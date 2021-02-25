@@ -28,7 +28,10 @@ BEGIN{
 	}
 }
 END{
-	printf("Engenharia: %10s, %10d \nRedes: %10s, %10d\nSistemas: %10s, %10d\n", nengenharia, engenharia, nredes, redes, nsistemas, sistemas);
+	e= "Engenharia:";
+	r= "Redes:";
+	s="Sistemas:";
+	printf("%-10s %10s, %10d \n%-10s %10s, %10d\n%-10s: %10s, %10d\n", e,nengenharia, engenharia, r, nredes, redes, s, nsistemas, sistemas);
 	
 	}
 
