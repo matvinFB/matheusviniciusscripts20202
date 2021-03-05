@@ -1,4 +1,5 @@
 #!/bin/bash
+# OK
 
 rem=0
 add=0

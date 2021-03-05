@@ -1,3 +1,4 @@
+# OK
 BEGIN{
 	redes = 0;
   	nredes = "nulo";
