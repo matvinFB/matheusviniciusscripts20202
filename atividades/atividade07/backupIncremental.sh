@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# Correção Atividade 07: 0,8
 data=$(date -d "$3" "+%Y%m%d%H%M%S")
 
 for i in $(ls $1)

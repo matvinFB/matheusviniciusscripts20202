@@ -1,4 +1,5 @@
 #!/bin/bash
+# Correção: 2,5. Não cria o arquivo dirSensors.log
 
 numArq=$(ls $2 | wc -l)
 
