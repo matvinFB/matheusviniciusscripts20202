@@ -1,20 +1,20 @@
 #!/bin/bash
 
-sudo apt update
-sudo apt install apache2 -y
+apt-get update
+apt-get install apache2 -y
 
 cat << EOF > /usr/local/bin/checaSistema.sh
 #!/bin/bash
 
 while true
 do
-	DATA=$(date +%H:%M:%S-%D)
-	execT=$(uptime -p | sed 's/up//g')
-	loadB=$(uptime | sed 's/user,  /!/g' | cut -d "!" -f 2)
-	qtdML=$(free -m | sed -n '2p'| awk '{print $4}')
-	qtdMU=$(free -m | sed -n '2p'| awk '{print $3}')
-	byteO=$(grep -n "eth0" /proc/net/dev | awk '{print $10}')
-	byteI=$(grep -n "eth0" /proc/net/dev | awk '{print $3}')
+	DATA=\$(date +%H:%M:%S-%D)
+	execT=\$(uptime -p | sed 's/up//g')
+	loadB=\$(uptime | sed 's/load average:/!/g' | cut -d "!" -f 2)
+	qtdML=\$(free -m | sed -n '2p'| awk '{print \$4}')
+	qtdMU=\$(free -m | sed -n '2p'| awk '{print \$3}')
+	byteO=\$(grep -n "eth0" /proc/net/dev | awk '{print \$10}')
+	byteI=\$(grep -n "eth0" /proc/net/dev | awk '{print \$3}')
 	
 cat << hehehe >  /var/www/html/index.html
 <!DOCTYPE html>
@@ -37,6 +37,13 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+footer {
+	display: flex;
+	justify-content: center;
+	padding: 5px;
+	
+}
 </style>
 </head>
 <body>
@@ -49,7 +56,7 @@ tr:nth-child(even) {
     <th>Valor</th>
   </tr>
   <tr>
-    <td>Data</td>
+    <td>Data da leitura</td>
     <td>\$DATA</td>
   </tr>
   <tr>
@@ -57,15 +64,15 @@ tr:nth-child(even) {
     <td>\$execT</td>
   </tr>
   <tr>
-    <td>Carga Média</td>
+    <td>Carga Media</td>
     <td>\$loadB</td>
   </tr>
   <tr>
-    <td>Memória Livre</td>
+    <td>Memoria Livre</td>
     <td>\$qtdML</td>
   </tr>
   <tr>
-    <td>Memória em Uso</td>
+    <td>Memoria em Uso</td>
     <td>\$qtdMU</td>
   </tr>  
   <tr>
@@ -78,6 +85,7 @@ tr:nth-child(even) {
   </tr>
 </table>
 
+<footer><small><i>Feito por</i> <b>Hehehe</b></small><footer>
 </body>
 </html>
 
@@ -88,9 +96,11 @@ hehehe
 	sleep 5
 done
 
-EOF
 
-cat << EOF > /etc/systemd/system/chegagemDoSistema.service
+EOF
+chmod 744 /usr/local/bin/checaSistema.sh
+
+cat << EOF > /etc/systemd/system/checagemDoSistema.service
 [Unit]
 After=network.target
 
@@ -101,10 +111,10 @@ ExecStart=/usr/local/bin/checaSistema.sh
 WantedBy=default.target
 EOF
 
-sudo chmod 664 /etc/systemd/system/chegagemDoSistema.service
-sudo systemctl daemon-reload
-sudo systemctl start /etc/systemd/system/chegagemDoSistema.service
-sudo systemctl enable chegagemDoSistema.service
+chmod 664 /etc/systemd/system/checagemDoSistema.service
+systemctl daemon-reload
+systemctl start checagemDoSistema.service
+systemctl enable checagemDoSistema.service
 
 
 
