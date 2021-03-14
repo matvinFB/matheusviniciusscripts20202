@@ -14,6 +14,8 @@ id=$(aws ec2 run-instances --image-id ami-042e8287309f5df03 --instance-type t2.m
 sleep 10
 state=$(aws ec2 describe-instance-status --instance-ids $id --query "InstanceStatuses[].SystemStatus.Details[].Status" --output text)
 
+# Tem certezaq que existe esse estado passed?
+# Altere para um estado válido
 until [ "$state" != "passed" ]
 do
 state=$(aws ec2 describe-instance-status --instance-ids $id --query "InstanceStatuses[].SystemStatus.Details[].Status" --output text)
