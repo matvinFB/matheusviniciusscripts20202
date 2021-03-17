@@ -21,4 +21,6 @@ done
 
 publicIp=$(aws ec2 describe-instances --instance-id $id --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text)
 
+echo "Instancia em estado \"running\""
+
 echo "Acesse: $publicIp"
