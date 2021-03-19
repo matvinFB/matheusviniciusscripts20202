@@ -1,4 +1,5 @@
 #!/bin/bash
+# Correção: 0,8
 
 echo "Criando servidor de Monitoramento..."
 grupo=$(aws ec2 create-security-group --group-name serverhttp --description "grupo para o server http" --output text)
@@ -14,6 +15,7 @@ id=$(aws ec2 run-instances --image-id ami-042e8287309f5df03 --instance-type t2.m
 sleep 10
 state=$(aws ec2 describe-instances --query "Reservations[].Instances[].State.Name" --output text)
 
+# Aqui seria um while, não um until
 until [ "$state" != "running" ]
 do
 state=$(aaws ec2 describe-instances --query "Reservations[].Instances[].State.Name" --output text)
