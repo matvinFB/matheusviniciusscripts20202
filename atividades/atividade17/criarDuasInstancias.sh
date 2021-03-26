@@ -1,6 +1,6 @@
 #!/bin/bash
-# Correção: 0,8
-
+# Correção: E o usuário e senha com parâmetro? Mas fora isso, funcionou, criou a tabela. 
+# Nota: 0,8
 echo "Criando servidor do Banco de Dados..."
 grupo=$(aws ec2 create-security-group --group-name mysqlserver --description "grupo para o server mysql" --output text)
 
