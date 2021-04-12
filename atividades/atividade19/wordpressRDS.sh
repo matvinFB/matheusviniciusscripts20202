@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# Correção: 0,0. Mas presença computada.RKVz720$tqjHiJVO9Q
 echo "Criando servidor do Banco de Dados..."
 
 
